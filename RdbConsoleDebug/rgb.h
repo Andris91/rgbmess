@@ -1,7 +1,10 @@
 #pragma once
+class rgb{
+public:
+	rgb();
+	rgb(double r, double g, double b);
 
-struct hsv {
-	double h;       // angle in degrees
-	double s;       // percent
-	double v;       // percent
+	double r;       // percent
+	double g;       // percent
+	double b;       // percent
 };

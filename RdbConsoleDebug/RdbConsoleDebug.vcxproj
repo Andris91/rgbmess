@@ -153,18 +153,24 @@
   <ItemGroup>
     <ClInclude Include="..\SDK\x86\SDKDLL.h" />
     <ClInclude Include="ColorUtil.h" />
+    <ClInclude Include="CycleColorsEffect.h" />
     <ClInclude Include="FadeInOutEffect.h" />
-    <ClInclude Include="hsv.h" />
-    <ClInclude Include="KeyRegion.h" />
     <ClInclude Include="rgb.h" />
+    <ClInclude Include="Key.h" />
+    <ClInclude Include="KeyRegion.h" />
+    <ClInclude Include="hsv.h" />
     <ClInclude Include="RgbController.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorUtil.cpp" />
+    <ClCompile Include="CycleColorsEffect.cpp" />
     <ClCompile Include="FadeInOutEffect.cpp" />
+    <ClCompile Include="Key.cpp" />
+    <ClCompile Include="KeyRegion.cpp" />
     <ClCompile Include="RdbConsoleDebug.cpp" />
+    <ClCompile Include="rgb.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

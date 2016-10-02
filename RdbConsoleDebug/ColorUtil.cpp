@@ -1,6 +1,38 @@
 #include "stdafx.h"
 using namespace std;
 
+void ColorUtil::setRegionFromHsv(KeyRegion keyregion, hsv color) {
+	rgb rgbColor = ColorUtil::hsv2rgb(color);
+	setRegionFromRgb(keyregion, rgbColor);
+}
+
+void ColorUtil::setRegionFromRgb(KeyRegion keyregion, rgb color) {
+
+	for (int col = keyregion.topLeftKey.col; col <= keyregion.bottomRightKey.col; col++) {
+
+		for (int row = keyregion.topLeftKey.row; row <= keyregion.bottomRightKey.row; row++) {
+
+			if (!SetLedColor(row, col, color.r * 255, color.g * 255, color.b * 255)) {
+				//cout << "setting led failed: col: " << col << " row: " << row << "\n";
+			}
+			else {
+				//cout << "setting led: col: " << col << " row: " << row << "\n";
+			}
+
+		}
+
+	}
+}
+
+void ColorUtil::setFullFromHsv(hsv color) {
+	rgb rgbcolor = ColorUtil::hsv2rgb(color);
+	SetFullLedColor(rgbcolor.r * 255, rgbcolor.g * 255, rgbcolor.b * 255);
+}
+
+void ColorUtil::setFullFromRgb(rgb color) {
+	SetFullLedColor(color.r * 255, color.g * 255, color.b * 255);
+}
+
 hsv ColorUtil::rgb2hsv(rgb in)
 {
 	hsv         out;

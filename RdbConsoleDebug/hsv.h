@@ -1,7 +1,7 @@
 #pragma once
 
-struct rgb {
-	double r;       // percent
-	double g;       // percent
-	double b;       // percent
+struct hsv {
+	double h;       // angle in degrees
+	double s;       // percent
+	double v;       // percent
 };

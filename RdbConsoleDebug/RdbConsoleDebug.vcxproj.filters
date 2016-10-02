@@ -39,12 +39,6 @@
     <ClInclude Include="ColorUtil.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="hsv.h">
-      <Filter>Header Files\util</Filter>
-    </ClInclude>
-    <ClInclude Include="rgb.h">
-      <Filter>Header Files\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\SDK\x86\SDKDLL.h">
       <Filter>Header Files\base</Filter>
     </ClInclude>
@@ -57,11 +51,23 @@
     <ClInclude Include="RgbController.h">
       <Filter>Header Files\colorcontrol</Filter>
     </ClInclude>
+    <ClInclude Include="FadeInOutEffect.h">
+      <Filter>Header Files\colorcontrol</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
     <ClInclude Include="KeyRegion.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="FadeInOutEffect.h">
+    <ClInclude Include="CycleColorsEffect.h">
       <Filter>Header Files\colorcontrol</Filter>
+    </ClInclude>
+    <ClInclude Include="hsv.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="rgb.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,18 @@
     </ClCompile>
     <ClCompile Include="FadeInOutEffect.cpp">
       <Filter>Source Files\colorcontrol</Filter>
+    </ClCompile>
+    <ClCompile Include="CycleColorsEffect.cpp">
+      <Filter>Source Files\colorcontrol</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyRegion.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="rgb.cpp">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

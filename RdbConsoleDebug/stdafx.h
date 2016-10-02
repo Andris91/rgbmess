@@ -21,7 +21,6 @@
 
 //Util
 #include "ColorUtil.h"
-#include "KeyRegion.h"
 #include "rgb.h"
 #include "hsv.h"
 
@@ -30,4 +29,5 @@
 
 //colorcontrol
 #include "FadeInOutEffect.h"
+#include "CycleColorsEffect.h"
 #include "RgbController.h"

@@ -1,105 +1,49 @@
 // RdbConsoleDebug.cpp : Defines the entry point for the console application.
 
 #include "stdafx.h"
-#include "boost\thread.hpp"
-
 using namespace std;
 
-boolean stopThreads = false;
+//TODO refactor me
+void transition(rgb fromColor, rgb toColor) {
+	//At the start assume the whole thing is fromColor
 
+	COLOR_MATRIX colorMatrix;
+	for (int row = 0; row <= KeyRegion::MAX_ROW; row++) {
+		for (int col = 0; col <= KeyRegion::MAX_COL; col++) {
 
-void setFullFromHsv(hsv color) {
-	rgb rgbcolor = ColorUtil::hsv2rgb(color);
-	SetFullLedColor(rgbcolor.r * 255, rgbcolor.g * 255, rgbcolor.b * 255);
-}
+			KEY_COLOR kc;
+			kc.r = fromColor.r * 255;
+			kc.g = fromColor.g * 255;
+			kc.b = fromColor.b * 255;
 
-void setFullFromRgb(rgb color) {
-	SetFullLedColor(color.r * 255, color.g * 255, color.b * 255);
-}
-
-void cycleColors(int angleOffset, DWORD deplay) {
-
-	//Start color
-	hsv color;
-	color.h = 0;
-	color.s = 1;
-	color.v = 1;
-
-	//hue goes from 0 to 359
-	while (true) {
-
-		color.h = color.h + angleOffset;
-
-		//Reset if needed
-		if (color.h > 359) {
-			color.h = 0;
-		}
-
-		setFullFromHsv(color);
-		Sleep(deplay);
-
-		if (stopThreads) {
-			return;
-		}
-
-	}
-
-}
-
-void fadeInOut(hsv color, double step, DWORD deplay) {
-	double v = 0;
-
-	while(true){	
-		//in
-		for (v; v <= 1; v = v + step) {
-			color.v = v;
-			//cout << "current: hue: " << color.h << ", saturation: " << color.s << ", value: " << color.v << "\n";
-			setFullFromHsv(color);
-			Sleep(deplay);
-
-			if (stopThreads) {
-				return;
-			}
-		}
-		//out
-		for (v = 1; v >= 0.2; v = v - step) {
-			color.v = v;
-			setFullFromHsv(color);
-			Sleep(deplay);
-
-			if (stopThreads) {
-				return;
-			}
+			colorMatrix.KeyColor[row][col] = kc;
 		}
 	}
-}
+
+	//start progressively chainging colorMatrix and apply changes after each iteration
+
+	//column by column
+	for (int col = 0; col <= KeyRegion::MAX_COL; col++) {
+		for (int row = 0; row <= KeyRegion::MAX_ROW; row++) {
+
+			KEY_COLOR kc;
+			kc.r = toColor.r * 255;
+			kc.g = toColor.g * 255;
+			kc.b = toColor.b * 255;
+
+			colorMatrix.KeyColor[row][col] = kc;
+		}
+		//apply
+		SetAllLedColor(colorMatrix);
+		Sleep(200);
+	}
+
+};
 
 int main()
 {
-
-	FadeInOutEffect* effect = new FadeInOutEffect();
-	KeyRegion keyRegion;
-	keyRegion.bottomLeftCol = 0;
-	keyRegion.topLeftCol = 10;
-
-	effect->start(keyRegion);
-
-	Sleep(5000);
-
-	effect->stop();
-
-	delete effect;
-
-	/*
-	hsv hsvColor;
-	hsvColor.h = 1;
-	hsvColor.s = 1;
-	hsvColor.v = 1;
-
-	ColorUtil::hsv2rgb(hsvColor);
-	
 	SetControlDevice(DEVICE_INDEX::DEV_MKeys_S);
-	
+
 	if (!IsDevicePlug()) {
 		cout << "Device not plugged in, exiting\n";
 		return 1;
@@ -113,24 +57,37 @@ int main()
 		return 1;
 	};
 
-	
-	rgb rgbRed;
-	rgbRed.r = 1;
-	rgbRed.g = 0;
-	rgbRed.b = 0;
-
+	rgb rgbYellow(1, 1, 0);
+	rgb rgbRed(1,0,0);
+	rgb rgbGreen(0, 1, 0);
 	hsv hsvRed = ColorUtil::rgb2hsv(rgbRed);
+	hsv hsvYellow = ColorUtil::rgb2hsv(rgbYellow);
+	hsv hsvGreen = ColorUtil::rgb2hsv(rgbGreen);
 
-	thread cycler(cycleColors, 1, 100);
-	//thread fader (fadeInOut, hsvRed, 0.03, 100);
+	FadeInOutEffect* fadeEffect1 = new FadeInOutEffect(hsvRed, 0.02, 50);
+	fadeEffect1->start();
+	Sleep(2500*3);
+	fadeEffect1->stop();
 
-	system("pause");
-	stopThreads = true;
-	cout << "shouldStop = " << stopThreads;
-	//fader.join();
-	cycler.join();
+	transition(rgbRed, rgbYellow);
 
+	FadeInOutEffect* fadeEffect2 = new FadeInOutEffect(hsvYellow, 0.02, 50);
+	fadeEffect2->start();
+	Sleep(2500 * 3);
+	fadeEffect2->stop();
+
+	transition(rgbYellow, rgbGreen);
+
+	FadeInOutEffect* fadeEffect3 = new FadeInOutEffect(hsvGreen, 0.02, 50);
+	fadeEffect3->start();
+	Sleep(2500 * 3);
+	fadeEffect3->stop();
+
+	delete fadeEffect1;
+	delete fadeEffect2;
+	delete fadeEffect3;
+	
 	EnableLedControl(false);
-    return 0;
-	*/
+	return 0;
 }
+
