@@ -3,6 +3,7 @@
 #include "stdafx.h"
 using namespace std;
 
+/*
 //TODO refactor me
 void transition(rgb fromColor, rgb toColor) {
 	//At the start assume the whole thing is fromColor
@@ -39,6 +40,42 @@ void transition(rgb fromColor, rgb toColor) {
 	}
 
 };
+*/
+
+//this loop will run in a separate thread than the main thead
+void eventLoop() {
+	//TODO: maybe manage the regions of all effects so none of them overlap
+	//continuously apply all effects, allow insertions into the effect arrray
+
+	//For every event, apply changes on the matrix
+
+	//EndlessEffect
+	//Apply effect on matrix
+	//You can kill an event by setting it's flag in the main thread
+
+	//EndingEffect
+	//Apply effect on matrix
+	//if ending effect, check if it's doneFlag is set to true, if it's done remove it from event queue and add somethign else
+
+
+
+
+	//apply state object
+	//if unchaged from previous state, don't apply, there's no point
+	//allow changing this speed during runtime
+	Sleep(30);
+
+
+	//add support from breaking out of this loop from the main thread
+
+	//initial stage is all white
+	COLOR_MATRIX colorMatrix;
+
+
+
+
+}
+
 
 int main()
 {
@@ -57,6 +94,7 @@ int main()
 		return 1;
 	};
 
+	/*
 	rgb rgbYellow(1, 1, 0);
 	rgb rgbRed(1,0,0);
 	rgb rgbGreen(0, 1, 0);
@@ -88,6 +126,11 @@ int main()
 	delete fadeEffect3;
 	
 	EnableLedControl(false);
+	*/
+
+
 	return 0;
 }
+
+
 

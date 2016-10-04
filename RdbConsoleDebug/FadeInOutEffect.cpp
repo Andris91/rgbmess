@@ -1,6 +1,7 @@
 #include "stdafx.h"
 using namespace std;
 
+/*
 FadeInOutEffect::FadeInOutEffect(hsv color, double step, DWORD delay){
 	this->color = color;
 	this->step = step;
@@ -68,3 +69,4 @@ void FadeInOutEffect::loop(KeyRegion* keyregion) {
 	}
 
 }
+*/

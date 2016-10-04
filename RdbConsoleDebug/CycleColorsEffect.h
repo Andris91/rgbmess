@@ -1,20 +1,11 @@
 #pragma once
 #include "stdafx.h"
 
-class CycleColorsEffect {
+class CycleColorsEffect : public ContinuousEffect{
 public:
-
-	CycleColorsEffect(int angleOffset, DWORD delay);
-
-	void start(KeyRegion keyRegion);
-	void stop();
-
+	CycleColorsEffect(KeyRegion keyRegion);
+	COLOR_MATRIX applyStep(COLOR_MATRIX currentState);
 private:
 	int angleOffset;
 	DWORD delay;
-
-	boost::thread effectThread;
-	boolean shouldThreadStop = false;
-
-	void loop(KeyRegion keyRegion);
 };

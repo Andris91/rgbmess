@@ -10,4 +10,5 @@ public:
 	Key bottomRightKey;
 
 	KeyRegion(Key topLeftKey, Key bottomRightKey);
+	KeyRegion();
 };
