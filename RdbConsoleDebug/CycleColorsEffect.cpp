@@ -1,22 +1,24 @@
 #include "stdafx.h"
 using namespace std;
 
-CycleColorsEffect::CycleColorsEffect(int angleOffset, DWORD delay) {
-	this->angleOffset = angleOffset;
-	this->delay = delay;
+CycleColorsEffect::CycleColorsEffect(KeyRegion keyRegion) : ContinuousEffect(keyRegion) {};
+
+COLOR_MATRIX CycleColorsEffect::applyStep(COLOR_MATRIX currentState) {
+	return currentState;
 }
 
-void CycleColorsEffect::start(KeyRegion keyRegion) {
+/*
+void start(KeyRegion keyRegion) {
 	//start the looping thread and return
 	effectThread = boost::thread(boost::bind(&CycleColorsEffect::loop, this, keyRegion));
 }
 
-void CycleColorsEffect::stop() {
+void stop() {
 	shouldThreadStop = true;
 	effectThread.join();
 }
 
-void CycleColorsEffect::loop(KeyRegion keyregion) {
+void loop(KeyRegion keyregion) {
 
 	//Start color
 	hsv color;
@@ -44,3 +46,4 @@ void CycleColorsEffect::loop(KeyRegion keyregion) {
 	}
 
 }
+*/

@@ -31,6 +31,18 @@
     <Filter Include="Header Files\util">
       <UniqueIdentifier>{0ede20e2-ea40-4808-bca9-d7bc9a413c38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\colorcontrol\base">
+      <UniqueIdentifier>{0efc2c2f-c4b4-436a-bd2f-74a2aa9f12f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\colorcontrol\base">
+      <UniqueIdentifier>{6acc8dc6-3b40-498d-8a50-52a2361c666d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\colorcontrol\base\impl">
+      <UniqueIdentifier>{f49b45d6-7c4c-49f5-9208-db09c5d03015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\colorcontrol\base\impl">
+      <UniqueIdentifier>{a42f4ef7-57ec-4133-83c8-b45b2ebf9988}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -60,14 +72,23 @@
     <ClInclude Include="KeyRegion.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="CycleColorsEffect.h">
-      <Filter>Header Files\colorcontrol</Filter>
-    </ClInclude>
     <ClInclude Include="hsv.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
     <ClInclude Include="rgb.h">
       <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Header Files\colorcontrol\base</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinuousEffect.h">
+      <Filter>Header Files\colorcontrol\base</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteEffect.h">
+      <Filter>Header Files\colorcontrol\base</Filter>
+    </ClInclude>
+    <ClInclude Include="CycleColorsEffect.h">
+      <Filter>Header Files\colorcontrol\base\impl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,12 +101,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\base</Filter>
     </ClCompile>
-    <ClCompile Include="FadeInOutEffect.cpp">
-      <Filter>Source Files\colorcontrol</Filter>
-    </ClCompile>
-    <ClCompile Include="CycleColorsEffect.cpp">
-      <Filter>Source Files\colorcontrol</Filter>
-    </ClCompile>
     <ClCompile Include="Key.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
@@ -94,6 +109,21 @@
     </ClCompile>
     <ClCompile Include="rgb.cpp">
       <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>Source Files\colorcontrol\base</Filter>
+    </ClCompile>
+    <ClCompile Include="FiniteEffect.cpp">
+      <Filter>Source Files\colorcontrol\base</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeInOutEffect.cpp">
+      <Filter>Source Files\colorcontrol</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinuousEffect.cpp">
+      <Filter>Source Files\colorcontrol\base</Filter>
+    </ClCompile>
+    <ClCompile Include="CycleColorsEffect.cpp">
+      <Filter>Source Files\colorcontrol\base\impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

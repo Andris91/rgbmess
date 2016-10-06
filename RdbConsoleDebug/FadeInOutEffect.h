@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-
+/*
 class FadeInOutEffect {
 public:
 
@@ -20,3 +20,4 @@ private:
 
 	void loop(KeyRegion* keyRegion);
 };
+*/

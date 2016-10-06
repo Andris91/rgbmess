@@ -19,15 +19,25 @@
 #include "boost\thread.hpp"
 #include "boost\chrono.hpp"
 
-//Util
-#include "ColorUtil.h"
-#include "rgb.h"
-#include "hsv.h"
-
 //base
 #include "SDKDLL.h"
 
 //colorcontrol
-#include "FadeInOutEffect.h"
+
+//base
+#include "Effect.h"
+#include "ContinuousEffect.h"
+#include "FiniteEffect.h"
+
+//impl
 #include "CycleColorsEffect.h"
+
+//ctrl
 #include "RgbController.h"
+
+//Util
+#include "ColorUtil.h"
+#include "rgb.h"
+#include "hsv.h"
+#include "Key.h"
+#include "KeyRegion.h"
