@@ -1,8 +1,9 @@
-#include "rgb.h"
+#include "stdafx.h"
+#include "RgbColor.h"
 
-rgb::rgb() {}
+RgbColor::RgbColor() {}
 
-rgb::rgb(double r, double g, double b) {
+RgbColor::RgbColor(double r, double g, double b) {
 	this->r = r;
 	this->g = g;
 	this->b = b;

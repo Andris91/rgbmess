@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "ContinuousEffect.h"
 
 void ContinuousEffect::setStopFlag(boolean stopFlag) {

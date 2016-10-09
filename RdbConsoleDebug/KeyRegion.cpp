@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "KeyRegion.h"
 
 KeyRegion::KeyRegion() {}

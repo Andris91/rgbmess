@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "CycleColorsEffect.h"
 using namespace std;
 
 CycleColorsEffect::CycleColorsEffect(KeyRegion keyRegion) : ContinuousEffect(keyRegion) {};

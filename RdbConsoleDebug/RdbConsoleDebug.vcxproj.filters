@@ -51,9 +51,6 @@
     <ClInclude Include="ColorUtil.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\SDK\x86\SDKDLL.h">
-      <Filter>Header Files\base</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files\base</Filter>
     </ClInclude>
@@ -63,19 +60,10 @@
     <ClInclude Include="RgbController.h">
       <Filter>Header Files\colorcontrol</Filter>
     </ClInclude>
-    <ClInclude Include="FadeInOutEffect.h">
-      <Filter>Header Files\colorcontrol</Filter>
-    </ClInclude>
     <ClInclude Include="Key.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
     <ClInclude Include="KeyRegion.h">
-      <Filter>Header Files\util</Filter>
-    </ClInclude>
-    <ClInclude Include="hsv.h">
-      <Filter>Header Files\util</Filter>
-    </ClInclude>
-    <ClInclude Include="rgb.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
@@ -89,6 +77,15 @@
     </ClInclude>
     <ClInclude Include="CycleColorsEffect.h">
       <Filter>Header Files\colorcontrol\base\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libx86\SDKDLL.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="HsvColor.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="RgbColor.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -116,23 +113,26 @@
     <ClCompile Include="FiniteEffect.cpp">
       <Filter>Source Files\colorcontrol\base</Filter>
     </ClCompile>
-    <ClCompile Include="FadeInOutEffect.cpp">
-      <Filter>Source Files\colorcontrol</Filter>
-    </ClCompile>
     <ClCompile Include="ContinuousEffect.cpp">
       <Filter>Source Files\colorcontrol\base</Filter>
     </ClCompile>
     <ClCompile Include="CycleColorsEffect.cpp">
       <Filter>Source Files\colorcontrol\base\impl</Filter>
     </ClCompile>
+    <ClCompile Include="FadeInOutEffect.cpp">
+      <Filter>Source Files\colorcontrol\base\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="HsvColor.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\SDK\x86\SDKDLL.dll">
+    <None Include="..\libx86\SDKDLL.dll">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\SDK\x86\SDKDLL.lib">
+    <Library Include="..\libx86\SDKDLL.lib">
       <Filter>Resource Files</Filter>
     </Library>
   </ItemGroup>

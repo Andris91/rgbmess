@@ -1,8 +1,8 @@
 #pragma once
-class rgb{
+class RgbColor{
 public:
-	rgb();
-	rgb(double r, double g, double b);
+	RgbColor();
+	RgbColor(double r, double g, double b);
 
 	double r;       // percent
 	double g;       // percent

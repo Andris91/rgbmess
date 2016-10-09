@@ -15,29 +15,5 @@
 #include <mutex>
 #include <set>
 
-//boost
-#include "boost\thread.hpp"
-#include "boost\chrono.hpp"
-
 //base
 #include "SDKDLL.h"
-
-//colorcontrol
-
-//base
-#include "Effect.h"
-#include "ContinuousEffect.h"
-#include "FiniteEffect.h"
-
-//impl
-#include "CycleColorsEffect.h"
-
-//ctrl
-#include "RgbController.h"
-
-//Util
-#include "ColorUtil.h"
-#include "rgb.h"
-#include "hsv.h"
-#include "Key.h"
-#include "KeyRegion.h"

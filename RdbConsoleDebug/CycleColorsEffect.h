@@ -1,4 +1,5 @@
 #pragma once
+#include "ContinuousEffect.h"
 #include "stdafx.h"
 
 class CycleColorsEffect : public ContinuousEffect{

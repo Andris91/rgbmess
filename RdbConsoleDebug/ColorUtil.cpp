@@ -1,12 +1,13 @@
 #include "stdafx.h"
+#include "ColorUtil.h"
 using namespace std;
 
-void ColorUtil::setRegionFromHsv(KeyRegion keyregion, hsv color) {
-	rgb rgbColor = ColorUtil::hsv2rgb(color);
+void ColorUtil::setRegionFromHsv(KeyRegion keyregion, HsvColor color) {
+	RgbColor rgbColor = ColorUtil::hsv2rgb(color);
 	setRegionFromRgb(keyregion, rgbColor);
 }
 
-void ColorUtil::setRegionFromRgb(KeyRegion keyregion, rgb color) {
+void ColorUtil::setRegionFromRgb(KeyRegion keyregion, RgbColor color) {
 
 	for (int col = keyregion.topLeftKey.col; col <= keyregion.bottomRightKey.col; col++) {
 
@@ -24,18 +25,18 @@ void ColorUtil::setRegionFromRgb(KeyRegion keyregion, rgb color) {
 	}
 }
 
-void ColorUtil::setFullFromHsv(hsv color) {
-	rgb rgbcolor = ColorUtil::hsv2rgb(color);
+void ColorUtil::setFullFromHsv(HsvColor color) {
+	RgbColor rgbcolor = ColorUtil::hsv2rgb(color);
 	SetFullLedColor(rgbcolor.r * 255, rgbcolor.g * 255, rgbcolor.b * 255);
 }
 
-void ColorUtil::setFullFromRgb(rgb color) {
+void ColorUtil::setFullFromRgb(RgbColor color) {
 	SetFullLedColor(color.r * 255, color.g * 255, color.b * 255);
 }
 
-hsv ColorUtil::rgb2hsv(rgb in)
+HsvColor ColorUtil::rgb2hsv(RgbColor in)
 {
-	hsv         out;
+	HsvColor         out;
 	double      min, max, delta;
 
 	min = in.r < in.g ? in.r : in.g;
@@ -78,11 +79,11 @@ hsv ColorUtil::rgb2hsv(rgb in)
 	return out;
 }
 
-rgb ColorUtil::hsv2rgb(hsv in)
+RgbColor ColorUtil::hsv2rgb(HsvColor in)
 {
 	double      hh, p, q, t, ff;
 	long        i;
-	rgb         out;
+	RgbColor         out;
 
 	if (in.s <= 0.0) {       // < is bogus, just shuts up warnings
 		out.r = in.v;
