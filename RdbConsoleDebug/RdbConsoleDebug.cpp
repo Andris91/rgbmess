@@ -6,45 +6,6 @@
 #include "CycleColorsEffect.h"
 using namespace std;
 
-/*
-//TODO refactor me
-void transition(rgb fromColor, rgb toColor) {
-	//At the start assume the whole thing is fromColor
-
-	COLOR_MATRIX colorMatrix;
-	for (int row = 0; row <= KeyRegion::MAX_ROW; row++) {
-		for (int col = 0; col <= KeyRegion::MAX_COL; col++) {
-
-			KEY_COLOR kc;
-			kc.r = fromColor.r * 255;
-			kc.g = fromColor.g * 255;
-			kc.b = fromColor.b * 255;
-
-			colorMatrix.KeyColor[row][col] = kc;
-		}
-	}
-
-	//start progressively chainging colorMatrix and apply changes after each iteration
-
-	//column by column
-	for (int col = 0; col <= KeyRegion::MAX_COL; col++) {
-		for (int row = 0; row <= KeyRegion::MAX_ROW; row++) {
-
-			KEY_COLOR kc;
-			kc.r = toColor.r * 255;
-			kc.g = toColor.g * 255;
-			kc.b = toColor.b * 255;
-
-			colorMatrix.KeyColor[row][col] = kc;
-		}
-		//apply
-		SetAllLedColor(colorMatrix);
-		Sleep(200);
-	}
-
-};
-*/
-
 void colorLoop(vector<Effect*> effects) {
 
 	//init state
@@ -100,14 +61,18 @@ int main()
 
 	//start thread
 	std::thread rgbThread(colorLoop, effects);
-
 	
 	Sleep(10000);
 
 	((CycleColorsEffect*)effects.at(0))->setStopFlag(true);
 	rgbThread.join();
-
 	EnableLedControl(false);
+
+	//useless but nice
+	for (auto &effect : effects) {
+		delete effect;
+	}
+
 	return 0;
 }
 
