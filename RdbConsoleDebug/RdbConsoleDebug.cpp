@@ -1,5 +1,9 @@
 // RdbConsoleDebug.cpp : Defines the entry point for the console application.
 #include "stdafx.h"
+#include <string>
+#include <iostream>
+#include "ColorUtil.h"
+#include "CycleColorsEffect.h"
 using namespace std;
 
 /*
@@ -41,40 +45,32 @@ void transition(rgb fromColor, rgb toColor) {
 };
 */
 
-//this loop will run in a separate thread than the main thead
-void eventLoop() {
-	//TODO: maybe manage the regions of all effects so none of them overlap
-	//continuously apply all effects, allow insertions into the effect arrray
+void colorLoop(vector<Effect*> effects) {
 
-	//For every event, apply changes on the matrix
+	//init state
+	COLOR_MATRIX currentState;
 
-	//EndlessEffect
-	//Apply effect on matrix
-	//You can kill an event by setting it's flag in the main thread
+	int i = 0;
+	while (true) {
 
-	//EndingEffect
-	//Apply effect on matrix
-	//if ending effect, check if it's doneFlag is set to true, if it's done remove it from event queue and add somethign else
+		for (auto &effect : effects){
+			currentState = effect->applyStep(currentState);
+		}
 
+		SetAllLedColor(currentState);
 
+		Sleep(50);
+		i++;
 
+		for (auto &effect : effects) {
+			if (effect->shouldStop()) {
+				return;
+			}
+		}
 
-	//apply state object
-	//if unchaged from previous state, don't apply, there's no point
-	//allow changing this speed during runtime
-	Sleep(30);
-
-
-	//add support from breaking out of this loop from the main thread
-
-	//initial stage is all white
-	COLOR_MATRIX colorMatrix;
-
-
-
+	}
 
 }
-
 
 int main()
 {
@@ -93,43 +89,25 @@ int main()
 		return 1;
 	};
 
-	/*
-	rgb rgbYellow(1, 1, 0);
-	rgb rgbRed(1,0,0);
-	rgb rgbGreen(0, 1, 0);
-	hsv hsvRed = ColorUtil::rgb2hsv(rgbRed);
-	hsv hsvYellow = ColorUtil::rgb2hsv(rgbYellow);
-	hsv hsvGreen = ColorUtil::rgb2hsv(rgbGreen);
+	KEY_COLOR keyColorRed = ColorUtil::rgbColorToKeyColor(RgbColor(1, 0, 0));
+	KEY_COLOR keyColorGreen = ColorUtil::rgbColorToKeyColor(RgbColor(0, 1, 0));
+	KEY_COLOR keyColorBlue = ColorUtil::rgbColorToKeyColor(RgbColor(0, 0, 1));
 
-	FadeInOutEffect* fadeEffect1 = new FadeInOutEffect(hsvRed, 0.02, 50);
-	fadeEffect1->start();
-	Sleep(2500*3);
-	fadeEffect1->stop();
+	vector<Effect*> effects;
+	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 0), Key(5, 5)), keyColorRed));
+	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 6), Key(5, 10)), keyColorGreen));
+	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 11), Key(5, 17)), keyColorBlue));
 
-	transition(rgbRed, rgbYellow);
+	//start thread
+	std::thread rgbThread(colorLoop, effects);
 
-	FadeInOutEffect* fadeEffect2 = new FadeInOutEffect(hsvYellow, 0.02, 50);
-	fadeEffect2->start();
-	Sleep(2500 * 3);
-	fadeEffect2->stop();
-
-	transition(rgbYellow, rgbGreen);
-
-	FadeInOutEffect* fadeEffect3 = new FadeInOutEffect(hsvGreen, 0.02, 50);
-	fadeEffect3->start();
-	Sleep(2500 * 3);
-	fadeEffect3->stop();
-
-	delete fadeEffect1;
-	delete fadeEffect2;
-	delete fadeEffect3;
 	
+	Sleep(10000);
+
+	((CycleColorsEffect*)effects.at(0))->setStopFlag(true);
+	rgbThread.join();
+
 	EnableLedControl(false);
-	*/
-
-
 	return 0;
 }
-
-
 

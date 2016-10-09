@@ -6,7 +6,8 @@ void ContinuousEffect::setStopFlag(boolean stopFlag) {
 }
 
 void ContinuousEffect::stopWhenStateEq(COLOR_MATRIX targetState) {
-	//TODO: make compare function on COLOR_MATRIX on given keyregion
+	this->stopFlagState = true;
+	this->stopState = targetState;
 }
 
 ContinuousEffect::ContinuousEffect(KeyRegion keyRegion) {

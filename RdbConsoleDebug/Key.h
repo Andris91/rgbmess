@@ -5,5 +5,5 @@ public:
 	int row;
 	int col;
 	Key();
-	Key(int col, int row);
+	Key(int row, int col);
 };

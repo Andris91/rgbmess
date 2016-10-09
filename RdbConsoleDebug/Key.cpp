@@ -3,7 +3,7 @@
 
 Key::Key() {};
 
-Key::Key(int col, int row) {
+Key::Key(int row, int col) {
 	this->row = row;
 	this->col = col;
 }

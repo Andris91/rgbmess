@@ -3,6 +3,10 @@
 
 Effect::Effect() {};
 
-boolean Effect::isStopped() {
+boolean Effect::shouldStop() {
 	return this->stopFlag;
+}
+
+KeyRegion Effect::getRegion() {
+	return this->keyRegion;
 }

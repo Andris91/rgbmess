@@ -14,6 +14,7 @@
 #include <thread>
 #include <mutex>
 #include <set>
+#include <vector>
 
 //base
 #include "SDKDLL.h"

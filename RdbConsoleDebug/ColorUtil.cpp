@@ -136,3 +136,81 @@ RgbColor ColorUtil::hsv2rgb(HsvColor in)
 	}
 	return out;
 }
+
+boolean ColorUtil::isEqualKeyColor(KEY_COLOR colorOne, KEY_COLOR colorTwo){
+	if ((colorOne.r == colorTwo.r) && (colorOne.g == colorTwo.g) && (colorOne.b == colorTwo.b)) {
+		return true;
+	}
+	return false;
+}
+
+boolean ColorUtil::isEqualColorMatrix(COLOR_MATRIX colMatOne, COLOR_MATRIX colMatTwo) {
+	int row = 0;
+	int col = 0;
+	const int maxRow = KeyRegion::MAX_ROW;
+	const int maxCol = KeyRegion::MAX_COL;
+
+	KeyRegion region = KeyRegion(Key(row, col), Key(maxRow, maxCol));
+	return isEqualColorMatrixInRegion(colMatOne, colMatTwo, region);
+}
+
+boolean ColorUtil::isEqualColorMatrixInRegion(COLOR_MATRIX colMatOne, COLOR_MATRIX colMatTwo, KeyRegion region) {
+
+	int row = region.topLeftKey.row;
+	int col = region.topLeftKey.col;
+	const int maxRow = region.bottomRightKey.row;
+	const int maxCol = region.bottomRightKey.col;
+
+	for (row; row <= maxRow; row++) {
+		for (col; col <= maxCol; col++) {
+			if (!isEqualKeyColor(
+				colMatOne.KeyColor[row][col],
+				colMatTwo.KeyColor[row][col])
+				) {
+				return false;
+			}
+		}
+		col = region.topLeftKey.col;
+	}
+	return true;
+}
+
+KEY_COLOR ColorUtil::rgbColorToKeyColor(RgbColor color) {
+	KEY_COLOR keyColor;
+	keyColor.r = color.r * 255;
+	keyColor.g = color.g * 255;
+	keyColor.b = color.b * 255;
+	return keyColor;
+}
+
+KEY_COLOR ColorUtil::hsvColorToKeyColor(HsvColor color) {
+	RgbColor rgbColor = hsv2rgb(color);
+	return rgbColorToKeyColor(rgbColor);
+}
+
+RgbColor ColorUtil::keyColorToRgbColor(KEY_COLOR color) {
+	RgbColor rgbColor;
+	rgbColor.r = color.r / 255.0;
+	rgbColor.g = color.g / 255.0;
+	rgbColor.b = color.b / 255.0;
+	return rgbColor;
+}
+
+HsvColor ColorUtil::keyColorToHsvColor(KEY_COLOR color) {
+	RgbColor rgbColor = keyColorToRgbColor(color);
+	return rgb2hsv(rgbColor);
+}
+
+COLOR_MATRIX ColorUtil::setRegionColor(COLOR_MATRIX colorMatrix, KeyRegion keyRegion, KEY_COLOR color) {
+	int row = keyRegion.topLeftKey.row;
+	int col = keyRegion.topLeftKey.col;
+	const int maxRow = keyRegion.bottomRightKey.row;
+	const int maxCol = keyRegion.bottomRightKey.col;
+	for (row; row <= maxRow; row++) {
+		for (col; col <= maxCol; col++) {
+			colorMatrix.KeyColor[row][col] = color;
+		}
+		col = keyRegion.topLeftKey.col;
+	}
+	return colorMatrix;
+}

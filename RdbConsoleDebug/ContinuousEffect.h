@@ -11,5 +11,7 @@ public:
 
 
 protected:
+	boolean stopFlagState = false;
+	COLOR_MATRIX stopState;
 	ContinuousEffect(KeyRegion keyRegion);
 };

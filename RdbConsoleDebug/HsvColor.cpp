@@ -3,7 +3,7 @@
 
 HsvColor::HsvColor() {}
 
-HsvColor::HsvColor(double hr, double s, double v) {
+HsvColor::HsvColor(double h, double s, double v) {
 	this->h = h;
 	this->s = s;
 	this->v = v;
