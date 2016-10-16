@@ -43,6 +43,12 @@
     <Filter Include="Header Files\colorcontrol\base\impl">
       <UniqueIdentifier>{a42f4ef7-57ec-4133-83c8-b45b2ebf9988}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\jenkins">
+      <UniqueIdentifier>{593981c1-3904-4f5f-aacf-7df065390260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jenkins">
+      <UniqueIdentifier>{999198c6-900d-4764-bbd2-a3d6a44b184d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -93,6 +99,9 @@
     <ClInclude Include="StaticColorFadeInEffect.h">
       <Filter>Header Files\colorcontrol\base\impl</Filter>
     </ClInclude>
+    <ClInclude Include="JenkinsRequestHelper.h">
+      <Filter>Header Files\jenkins</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorUtil.cpp">
@@ -137,11 +146,15 @@
     <ClCompile Include="StaticColorFadeInEffect.cpp">
       <Filter>Source Files\colorcontrol\base\impl</Filter>
     </ClCompile>
+    <ClCompile Include="JenkinsRequestHelper.cpp">
+      <Filter>Source Files\jenkins</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\libx86\SDKDLL.dll">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\libx86\SDKDLL.lib">

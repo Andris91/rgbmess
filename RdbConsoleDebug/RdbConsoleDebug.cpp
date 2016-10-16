@@ -5,11 +5,31 @@
 #include "RgbController.h"
 #include "RandomColorFadeInEffect.h"
 #include "StaticColorFadeInEffect.h"
-using namespace std;
+#include "JenkinsRequestHelper.h"
+
+
+DWORD pollSleep = 5000;
 
 int main()
 {
 
+	BuildResult laskKnownResult = BuildResult::unknown;
+
+	JenkinsRequestHelper jenkinsRequestHelper = JenkinsRequestHelper("http://localhost", "8080", "random");
+	while (true) {
+		pplx::task<BuildStatus> task = jenkinsRequestHelper.getCurrentStatus();
+		task.wait();
+
+		BuildStatus bs = task.get();
+		if (bs.result != BuildResult::unknown) {
+			laskKnownResult = bs.result;
+		}
+
+		std::cout << "Build status: " << bs.toString().c_str() << ", last known result: " << BuildStatus::toString(laskKnownResult) << "\n";
+		Sleep(pollSleep);
+	}
+
+	/*
 	KEY_COLOR keyColorRed = ColorUtil::rgbColorToKeyColor(RgbColor(1, 0, 0));
 	KEY_COLOR keyColorGreen = ColorUtil::rgbColorToKeyColor(RgbColor(0, 1, 0));
 	KEY_COLOR keyColorBlue = ColorUtil::rgbColorToKeyColor(RgbColor(0, 0, 1));
@@ -34,6 +54,6 @@ int main()
 	//ze end
 	system("pause");
 	rgbController.stopColorLoop();
-	return 0;
+	*/
 }
 

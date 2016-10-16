@@ -11,10 +11,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <ostream>
 #include <thread>
 #include <mutex>
 #include <set>
 #include <vector>
+
 
 //base
 #include "SDKDLL.h"
