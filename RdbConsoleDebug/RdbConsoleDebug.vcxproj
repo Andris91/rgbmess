@@ -168,6 +168,7 @@
     <ClInclude Include="KeyRegion.h" />
     <ClInclude Include="HsvColor.h" />
     <ClInclude Include="RgbController.h" />
+    <ClInclude Include="StaticColorFadeInEffect.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -176,7 +177,6 @@
     <ClCompile Include="ContinuousEffect.cpp" />
     <ClCompile Include="CycleColorsEffect.cpp" />
     <ClCompile Include="Effect.cpp" />
-    <ClCompile Include="FadeInOutEffect.cpp" />
     <ClCompile Include="FiniteEffect.cpp" />
     <ClCompile Include="HsvColor.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -185,6 +185,7 @@
     <ClCompile Include="RdbConsoleDebug.cpp" />
     <ClCompile Include="rgb.cpp" />
     <ClCompile Include="RgbController.cpp" />
+    <ClCompile Include="StaticColorFadeInEffect.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

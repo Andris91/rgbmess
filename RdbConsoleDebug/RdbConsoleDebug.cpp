@@ -4,6 +4,7 @@
 #include "CycleColorsEffect.h"
 #include "RgbController.h"
 #include "RandomColorFadeInEffect.h"
+#include "StaticColorFadeInEffect.h"
 using namespace std;
 
 int main()
@@ -21,8 +22,8 @@ int main()
 	//effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 6), Key(5, 10)), keyColorGreen));
 	//effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 6), Key(5, 10))));
 	//effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 11), Key(5, 17))));
-
-	effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 0), Key(5, 17))));
+	//effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 0), Key(5, 17))));
+	effects.push_back(new StaticColorFadeInEffect(KeyRegion(Key(0, 0), Key(5, 17)), RgbColor(0,1,0), 0.03));
 
 	rgbController.setEffectQueue(effects);
 
