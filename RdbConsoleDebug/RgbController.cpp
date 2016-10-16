@@ -64,7 +64,7 @@ void RgbController::loop() {
 	int i = 0;
 	while (true) {
 
-		cout << "Effect queue size: " << effectQueue.size() << "\n";
+		//cout << "Effect queue size: " << effectQueue.size() << "\n";
 
 		for (auto &effect : this->effectQueue) {
 			currentState = effect->applyStep(currentState);

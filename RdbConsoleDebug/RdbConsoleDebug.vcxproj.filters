@@ -87,6 +87,9 @@
     <ClInclude Include="RgbColor.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
+    <ClInclude Include="RandomColorFadeInEffect.h">
+      <Filter>Header Files\colorcontrol\base\impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorUtil.cpp">
@@ -127,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="RgbController.cpp">
       <Filter>Source Files\colorcontrol</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomColorFadeInEffect.cpp">
+      <Filter>Source Files\colorcontrol\base\impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

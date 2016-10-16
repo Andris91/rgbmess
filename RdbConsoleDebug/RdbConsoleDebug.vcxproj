@@ -162,6 +162,7 @@
     <ClInclude Include="CycleColorsEffect.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="FiniteEffect.h" />
+    <ClInclude Include="RandomColorFadeInEffect.h" />
     <ClInclude Include="RgbColor.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="KeyRegion.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="HsvColor.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="KeyRegion.cpp" />
+    <ClCompile Include="RandomColorFadeInEffect.cpp" />
     <ClCompile Include="RdbConsoleDebug.cpp" />
     <ClCompile Include="rgb.cpp" />
     <ClCompile Include="RgbController.cpp" />

@@ -3,6 +3,7 @@
 #include "ColorUtil.h"
 #include "CycleColorsEffect.h"
 #include "RgbController.h"
+#include "RandomColorFadeInEffect.h"
 using namespace std;
 
 int main()
@@ -16,20 +17,22 @@ int main()
 
 	vector<Effect*> effects = rgbController.getEffectQueue();
 
-	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 0), Key(5, 5)), keyColorRed));
-	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 6), Key(5, 10)), keyColorGreen));
-	effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 11), Key(5, 17)), keyColorBlue));
+	//effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 0), Key(5, 5)), keyColorRed));
+	//effects.push_back(new CycleColorsEffect(KeyRegion(Key(0, 6), Key(5, 10)), keyColorGreen));
+	//effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 6), Key(5, 10))));
+	//effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 11), Key(5, 17))));
+
+	effects.push_back(new RandomColorFadeInEffect(KeyRegion(Key(0, 0), Key(5, 17))));
 
 	rgbController.setEffectQueue(effects);
 
-	rgbController.setColorLoopSleepMillis(200);
+	rgbController.setColorLoopSleepMillis(30);
 
 	rgbController.startColorLoop();
 
-	Sleep(10000);
-
+	//ze end
+	system("pause");
 	rgbController.stopColorLoop();
-
 	return 0;
 }
 
