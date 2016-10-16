@@ -17,7 +17,7 @@ COLOR_MATRIX CycleColorsEffect::applyStep(COLOR_MATRIX currentState) {
 	KEY_COLOR regionColor = currentState.KeyColor[keyRegion.topLeftKey.row][keyRegion.topLeftKey.col];
 
 	HsvColor hsvColor = ColorUtil::keyColorToHsvColor(regionColor);
-	hsvColor.h = hsvColor.h + 2;
+	hsvColor.h = hsvColor.h + 10;
 
 	KEY_COLOR newColor = ColorUtil::hsvColorToKeyColor(hsvColor);
 

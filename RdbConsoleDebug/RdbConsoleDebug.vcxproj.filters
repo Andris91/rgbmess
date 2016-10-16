@@ -125,6 +125,9 @@
     <ClCompile Include="HsvColor.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
+    <ClCompile Include="RgbController.cpp">
+      <Filter>Source Files\colorcontrol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\libx86\SDKDLL.dll">
