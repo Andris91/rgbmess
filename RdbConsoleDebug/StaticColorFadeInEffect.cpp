@@ -11,7 +11,26 @@ StaticColorFadeInEffect::StaticColorFadeInEffect(KeyRegion keyRegion, RgbColor t
 	this->valueStep = valueStep;
 };
 
+void StaticColorFadeInEffect::setTargetColor(RgbColor targetColor) {
+	HsvColor hsvColor = ColorUtil::rgb2hsv(targetColor);
+	this->targetColor.h = hsvColor.h;
+	this->targetColor.s = hsvColor.s;
+}
+
+void StaticColorFadeInEffect::pause() {
+	this->isPaused = true;
+}
+
+void StaticColorFadeInEffect::unpause() {
+	this->isPaused = false;
+	this->isReallyPaused = false;
+}
+
 COLOR_MATRIX StaticColorFadeInEffect::applyStep(COLOR_MATRIX currentState) {
+
+	if (isPaused && isReallyPaused) {
+		return currentState;
+	}
 
 	if (fadeIn) {
 		targetColor.v = targetColor.v + valueStep;
@@ -22,6 +41,9 @@ COLOR_MATRIX StaticColorFadeInEffect::applyStep(COLOR_MATRIX currentState) {
 
 	if (targetColor.v >= 1.0) {
 		fadeIn = false;
+		if (isPaused) {
+			this->isReallyPaused = true;
+		}
 	}
 	else if (targetColor.v <= 0.1) {
 		fadeIn = true;
